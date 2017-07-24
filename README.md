@@ -3,10 +3,9 @@
 ```
 npm install
 npm run start
-
 ```
 
-Then POST requests can be made against localhost:3000/email
+Then POST requests can be made against `localhost:3000/email`
 
 ## Technical Choices
 
