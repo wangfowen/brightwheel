@@ -17,4 +17,9 @@ describe("clean body", () => {
     const text = "<h1>Test</h1><br />";
     cleanBody(text).should.equal("Test\n");
   });
+
+  it("should only newline once for nested tags", () => {
+    const text = "<div><h1>Test</h1></div>";
+    cleanBody(text).should.equal("Test\n");
+  });
 });

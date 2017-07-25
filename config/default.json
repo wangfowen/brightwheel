@@ -1,7 +1,7 @@
 {
   "emailClient": "mailgun",
   "mailgun": {
-    "url": "api.mailgun.net/v3/sandboxee1daea79f7d469baa269b095debc890.mailgun.org/messages"
+    "url": "https://api.mailgun.net/v3/sandboxee1daea79f7d469baa269b095debc890.mailgun.org/messages"
   },
   "sendgrid": {
     "url": "https://api.sendgrid.com/v3/mail/send"

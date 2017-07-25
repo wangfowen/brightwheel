@@ -10,8 +10,8 @@ const req = (
   resp,
   to = "supernuber@gmail.com",
   to_name = "Owen Wang",
-  from = "postmaster@sandboxee1daea79f7d469baa269b095debc890.mailgun.org",
-  from_name = "Mailgun Sandbox",
+  from = "noreply@mybrightwheel.com",
+  from_name = "Brightwheel",
   subject = "A Message from Brightwheel",
   body = "<h1>Your Bill</h1><p>$10</p>"
 ) => {
@@ -20,7 +20,13 @@ const req = (
     .send({
       to, to_name, from, from_name, subject, body
     })
-    .end((err, res) => resp(err, res));
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      }
+
+      resp(err, res)
+    });
 }
 
 describe("/POST email", () => {
