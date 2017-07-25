@@ -1,9 +1,7 @@
 const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
   res.status(err.status || 500);
-  res.render("error", {
-    message: err.message,
-    error: err
-  });
+  res.render("error", { error: err });
 }
 
 const cleanBody = (body) => {
@@ -20,7 +18,17 @@ const cleanBody = (body) => {
     .replace(/<[^>]+>/g, "");
 }
 
+const combinedName = (email, name) => {
+  return name + " <" + email + ">";
+}
+
+const mailgunUri = (api, url) => {
+  return "https://api:" + api + "@" + url;
+}
+
 module.exports = {
   errorHandler,
-  cleanBody
+  cleanBody,
+  combinedName,
+  mailgunUri
 };

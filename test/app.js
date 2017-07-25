@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
 let chai = require("chai");
 let chaiHttp = require("chai-http");
@@ -8,10 +8,10 @@ chai.use(chaiHttp);
 
 const req = (
   resp,
-  to = "fake@example.com",
-  to_name = "Mr. Fake",
-  from = "noreply@mybrightwheel.com",
-  from_name = "Brightwheel",
+  to = "supernuber@gmail.com",
+  to_name = "Owen Wang",
+  from = "postmaster@sandboxee1daea79f7d469baa269b095debc890.mailgun.org",
+  from_name = "Mailgun Sandbox",
   subject = "A Message from Brightwheel",
   body = "<h1>Your Bill</h1><p>$10</p>"
 ) => {
