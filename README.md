@@ -67,3 +67,8 @@ more robust to be able to share templates between emails. There would likely be
 another layer on top to send different kinds of emails, all calling this service 
 for the actual sending.
 
+For a real production service, I'd also use Typescript or Flux instead of 
+standard Javascript to make the code strongly typed. Javascript's lack of type 
+declaration / actual interfaces meant I had to declare client as an empty object 
+first, with no indication it should be an EmailClient. That could be very 
+confusing / brittle in production.

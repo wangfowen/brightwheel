@@ -18,8 +18,10 @@ app.post("/email", (req, res, next) => {
     }
   }
 
+  //client will be assigned to an EmailClient
   let client = {};
   try {
+    //configs error out on their own if they don't exist
     switch (config.get("emailClient")) {
       case "mailgun":
         const mgApi = process.env.MAILGUN_API_KEY;
