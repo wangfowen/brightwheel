@@ -1,0 +1,9 @@
+{
+  "mailgun": {
+    "apiKey": "MAILGUN_API_KEY"
+  },
+  "sendgrid": {
+    "apiKey": "SENDGRID_API_KEY"
+  }
+}
+
