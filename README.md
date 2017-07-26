@@ -66,6 +66,7 @@ declaration / actual interfaces makes the EmailClient interface brittle.
 Also I would have set up a TestClient instead in the EmailController test. It'd 
 store the emails sent in memory to check the contents of it, and then separately 
 have unit tests to make sure the MailgunClient and SendgridClient are functional 
--- it's fairly easy to confirm mkOptions returns the options the APIs expect. My 
-current integration tests achieve both / lets me see the actual emails sent, 
-which is nice for this exercise, but not as nice for continuous integration.
+-- it's fairly easy to confirm mkOptions returns the configurations as the APIs 
+expect. My current integration tests achieve both / lets me see the actual 
+emails sent, which is nice for this exercise, but not as nice for continuous 
+integration since it actually sends emails.

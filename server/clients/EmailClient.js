@@ -3,7 +3,8 @@ let request = require("request-promise");
 module.exports = class EmailClient {
   constructor() {}
 
-  //this will error unless overridden
+  //options to be passed into the request for sending email
+  //request will fail unless this gets overridden with actual content
   mkOptions(to, toName, from, fromName, subject, body) {
     return {};
   }

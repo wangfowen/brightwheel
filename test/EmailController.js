@@ -24,11 +24,7 @@ const req = (
       to, to_name, from, from_name, subject, body
     })
     .end((err, res) => {
-      if (err) {
-        console.error(err);
-      }
-
-      test(err, res)
+      test(err, res);
     });
 }
 
@@ -39,7 +35,14 @@ const clients = { mailgunClient, sendgridClient };
 for (let clientType of Object.keys(clients)) {
   describe(clientType, () => {
     const controller = new EmailController(clients[clientType]);
-    controller.start();
+
+    before(() => {
+      controller.start();
+    });
+
+    after(() => {
+      controller.shutdown();
+    });
 
     describe("/POST email", () => {
       it("should succeed", (done) => {
@@ -57,9 +60,21 @@ for (let clientType of Object.keys(clients)) {
             done();
           });
       });
-    });
 
-    controller.shutdown();
+      it("should fail if params are empty", (done) => {
+        req(controller.app, (err, res) => {
+          res.should.have.status(500);
+          done();
+        }, "");
+      });
+
+      it("should fail if email isn't valid", (done) => {
+        req(controller.app, (err, res) => {
+          res.should.have.status(500);
+          done();
+        }, "NotAnEmail");
+      });
+    });
   });
 }
 

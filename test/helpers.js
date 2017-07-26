@@ -1,8 +1,8 @@
-let { cleanBody } = require("../server/helpers");
+let { cleanBody, isValidEmail } = require("../server/helpers");
 let chai = require("chai");
 let should = chai.should();
 
-describe("clean body", () => {
+describe("cleanBody", () => {
   it("should remove html tags", () => {
     const text = "<h1>Your Bill</h1><p>$10</p>";
     cleanBody(text).should.equal("Your Bill\n$10\n");
@@ -21,5 +21,17 @@ describe("clean body", () => {
   it("should only newline once for nested tags", () => {
     const text = "<div><h1>Test</h1></div>";
     cleanBody(text).should.equal("Test\n");
+  });
+});
+
+describe("isValidEmail", () => {
+  it("should pass for valid email", () => {
+    const email = "supernuber@gmail.com";
+    isValidEmail(email).should.equal(true);
+  });
+
+  it("should fail for invalid email", () => {
+    const email = "NotAnEmail";
+    isValidEmail(email).should.equal(false);
   });
 });

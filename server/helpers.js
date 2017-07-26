@@ -13,7 +13,14 @@ const cleanBody = (body) => {
     .replace(/(\n){2,}/g, "\n");
 }
 
+const isValidEmail = (email) => {
+  //taken from RFC2822
+  const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  return regex.test(email);
+}
+
 module.exports = {
   errorHandler,
-  cleanBody
+  cleanBody,
+  isValidEmail
 };

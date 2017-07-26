@@ -6,9 +6,9 @@ let SendgridClient = require("./clients/SendgridClient");
 
 const client = ((clientType) => {
   switch(clientType) {
-    case 'mailgun':
+    case "mailgun":
       return new MailgunClient(config);
-    case 'sendgrid':
+    case "sendgrid":
       return new SendgridClient(config);
     default:
       throw new Error("client type not recognized: " + clientType);
